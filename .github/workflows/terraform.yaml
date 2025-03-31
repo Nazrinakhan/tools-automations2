@@ -1,8 +1,8 @@
 name: Provision Tool Infra
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 jobs:
     Provision:
-      runs-on: ubuntu-latest
+      runs-on: self-host
       steps:
         - uses: actions/checkout@v4
           run: terraform init

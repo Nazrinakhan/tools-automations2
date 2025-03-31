@@ -1,6 +1,6 @@
 name: Provision Tool Infra
-  on: [push, workflow_dispatch]
-  jobs:
+on: [push, workflow_dispatch]
+jobs:
     Provision:
       runs-on: ubuntu-latest
       steps:

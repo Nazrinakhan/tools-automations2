@@ -1,10 +1,16 @@
-name: provision tool
-on: [workflow_dispatch]
+ame: provision tool
+
+on:
+  - workflow_dispatch
+
 jobs:
   provision:
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Initialize Terraform
         run: terraform init
 
 

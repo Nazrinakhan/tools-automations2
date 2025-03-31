@@ -4,6 +4,4 @@ jobs:
     Provision:
       runs-on: ubuntu-latest
       steps:
-        - run: terraform --version
-
-#
+        - run: ls -l

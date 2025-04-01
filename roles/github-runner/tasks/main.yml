@@ -1,2 +1,14 @@
-- debug:
-    msg: Hello
+- name: setup prompt
+  ansible.builtin.shell: set-prompt runner-machine
+
+- name: create directory
+  ansible.builtin.file:
+    path: /actions-runner
+    state: directory
+
+- name: Download and extract Runner
+  ansible.builtin.unarchive:
+    src: curl -o actions-runner-linux-x64-2.323.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.323.0/actions-runner-linux-x64-2.323.0.tar.gz
+    dest: "/actions-runner"
+    remote_src: yes
+

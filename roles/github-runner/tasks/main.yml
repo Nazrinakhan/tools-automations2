@@ -1,29 +1,31 @@
 - name: setup prompt
-  ansible.builtin.shell: set-prompt runner-machine
+  ansible.builtin.shell: se-prompt git-runner
 
-- name: create directory
+- name: Create /actions-runner directory
   ansible.builtin.file:
     path: /actions-runner
     state: directory
 
-- name: Download and extract Runner
-  ansible.builtin.unarchive:
-    src: https://github.com/actions/runner/releases/download/v2.323.0/actions-runner-linux-x64-2.323.0.tar.gz
-    dest: "/actions-runner"
+
+- name: Download GitHub Actions Runner
+  ansible.builtin.get_url:
+    url: https://github.com/actions/runner/releases/download/v2.323.0/actions-runner-linux-x64-2.323.0.tar.gz
+    dest: /actions-runner/actions-runner-linux-x64-2.323.0.tar.gz
     remote_src: yes
 
+- name: Extract GitHub Actions Runner
+  ansible.builtin.unarchive:
+    src: /actions-runner/actions-runner-linux-x64-2.323.0.tar.gz
+    dest: /actions-runner
+    remote_src: yes
 
-- name: Download and extract Runner
+- name: Download GitHub CLI repository file
   ansible.builtin.get_url:
-    src: https://cli.github.com/packages/rpm/gh-cli.repo
-    dest: /etc/yum/repos.d/gh-cli.repo
+    url: https://cli.github.com/packages/rpm/gh-cli.repo
+    dest: /etc/yum.repos.d/gh-cli.repo
 
-- name: install github cli
+
+- name: Install GitHub CLI
   ansible.builtin.dnf:
-    name: gh-cli
+    name: gh
     state: latest
-
-
-
-
-

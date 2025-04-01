@@ -7,17 +7,11 @@
     state: directory
 
 
-- name: Download GitHub Actions Runner
-  ansible.builtin.get_url:
-    url: https://github.com/actions/runner/releases/download/v2.323.0/actions-runner-linux-x64-2.323.0.tar.gz
-    dest: /actions-runner/actions-runner-linux-x64-2.323.0.tar.gz
-    remote_src: yes
-
-- name: Extract GitHub Actions Runner
+- name: Download and extract GitHub Actions Runner
   ansible.builtin.unarchive:
-    src: /actions-runner/actions-runner-linux-x64-2.323.0.tar.gz
-    dest: /actions-runner
-    remote_src: yes
+    src: "https://github.com/actions/runner/releases/download/v2.323.0/actions-runner-linux-x64-2.323.0.tar.gz"
+    dest: "/actions-runner"
+    remote_src: no
 
 - name: Download GitHub CLI repository file
   ansible.builtin.get_url:

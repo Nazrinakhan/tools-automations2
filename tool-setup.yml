@@ -1,9 +1,0 @@
-- name: Setup tool with Ansible
-  hosts: all
-  become: yes
-  tasks:
-    - name: Include the tool role dynamically
-      include_role:
-        name: "{{ tool_name }}"
-
-

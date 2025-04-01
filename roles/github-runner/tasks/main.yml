@@ -1,5 +1,5 @@
 - name: setup prompt
-  ansible.builtin.shell: se-prompt git-runner
+  ansible.builtin.shell: set-prompt git-runner
 
 - name: Create /actions-runner directory
   ansible.builtin.file:

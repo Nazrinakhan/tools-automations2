@@ -1,7 +1,7 @@
 resource "aws_instance" "tool"{
     ami = data.aws_ami.rhel9.image_id
     instance_type = var.instance_type
-    vpc_security_group_ids = [aws_security_group.tools-sg.id]
+    vpc_security_group_ids = [aws_security_group.existing_sg.id]
 
   tags = {
     Name = var.name
@@ -10,7 +10,7 @@ resource "aws_instance" "tool"{
 
 }
 
-resource "aws_security_group" "tools-sg" {
+resource "aws_security_group" "existing_sg" {
   name        = "${var.name}-sg"
   description = "${var.name}-sg"
 

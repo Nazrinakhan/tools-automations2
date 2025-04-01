@@ -10,7 +10,7 @@ resource "aws_instance" "tool"{
 
 }
 
-resource "aws_security_group" "tools-sg2" {
+resource "aws_security_group" "tools-sg" {
   name        = "${var.name}-sg"
   description = "${var.name}-sg"
 
